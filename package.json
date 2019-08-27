@@ -1,0 +1,69 @@
+{
+  "name": "japan-stock-collector",
+  "version": "1.0.0",
+  "description": "株式データ収集API",
+  "license": "GPL-3.0-or-later",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "engines": {
+    "node": ">= 10.15.0",
+    "npm": ">= 6.4.1",
+    "yarn": ">= 1.12.3"
+  },
+  "scripts": {
+    "bdd": "yarn jest --watch --onlyChanged",
+    "build:prod": "yarn build:preprocess && yarn tsc:app",
+    "build:preprocess": "rimraf dist",
+    "ci:build-check": "yarn run tsc:app --noEmit",
+    "coverage": "jest -c jest.config.js --collectCoverage",
+    "format": "yarn format:ts:import && prettier --config .prettierrc --write '{docker,src}/**/*.{ts,md,yaml,yml}'",
+    "format:ts:import": "import-sort --write 'src/**/*.ts'",
+    "jest": "jest -c jest.config.js",
+    "lint": "yarn lint:ts",
+    "lint:ts": "tslint -p tsconfig.json -c tslint.json",
+    "prepublishOnly": "yarn build:prod",
+    "test": "yarn jest --runInBand",
+    "tsc:app": "tsc -p tsconfig.app.json",
+    "tsc:dev": "tsc -p tsconfig.dev.json"
+  },
+  "keywords": [
+    "japan stock",
+    "株式",
+    "株式データ"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zlq4863947/japan-stock-collector.git"
+  },
+  "author": "zlq4863947@gmail.com",
+  "bugs": {
+    "url": "https://github.com/zlq4863947/japan-stock-collector/issues"
+  },
+  "homepage": "https://github.com/zlq4863947/japan-stock-collector#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/qs": "^6.5.3",
+    "@types/url-join": "^4.0.0",
+    "import-sort": "^6.0.0",
+    "import-sort-cli": "^6.0.0",
+    "import-sort-parser-typescript": "^6.0.0",
+    "import-sort-style-module-alias": "^1.0.4",
+    "jest": "^24.5.0",
+    "prettier": "^1.16.4",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.3",
+    "tsconfig-paths": "^3.8.0",
+    "tslint": "^5.14.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.3.4000",
+    "vrsource-tslint-rules": "^6.0.0",
+    "yarn": "^1.17.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "iconv-lite": "^0.5.0",
+    "qs": "^6.8.0",
+    "url-join": "^4.0.1"
+  }
+}
